@@ -8,7 +8,7 @@
 static struct task_struct *thread1;
 
 
-int thread_fn() {
+int thread_fn(void) {
 
 unsigned long j0,j1;
 int delay = 60*HZ;
