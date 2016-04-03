@@ -1,11 +1,8 @@
-ifneq ($(KERNELRELEASE),)
-   obj-m := threads.o
-else
 
-KERNELDIR ?= /lib/modules/$(shell uname -r)/build
+   obj-m += threads.o
 
-PWD := $(shell pwd)
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
-default:
-    $(MAKE) -C $(KERNELDIR) M=$(PWD) modules 
-endif
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
