@@ -13,7 +13,7 @@ int thread_fn() {
 unsigned long j0,j1;
 int delay = 60*HZ;
 
-printk(KERN_INFO "In thread1");
+printk(KERN_INFO "Aditya: Thread");
 j0 = jiffies;
 j1 = j0 + delay;
 
@@ -25,12 +25,12 @@ return 0;
 
 int thread_init (void) {
    
-    char  our_thread[8]="thread1";
-    printk(KERN_INFO "in init");
+    char  our_thread[18]="Aditya: thrd";
+    printk(KERN_INFO "Aditya: in init");
     thread1 = kthread_create(thread_fn,NULL,our_thread);
     if((thread1))
         {
-        printk(KERN_INFO "in if");
+        printk(KERN_INFO "Aditya: in if");
         wake_up_process(thread1);
         }
 
@@ -43,7 +43,7 @@ void thread_cleanup(void) {
  int ret;
  ret = kthread_stop(thread1);
  if(!ret)
-  printk(KERN_INFO "Thread stopped");
+  printk(KERN_INFO "Aditya: Thread stopped");
 
 }
 MODULE_LICENSE("GPL");
